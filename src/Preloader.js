@@ -3,17 +3,17 @@ class Preloader extends Phaser.Scene{
         super("Preloader");
     }
     preload(){
-        this.load.image("sky","../bp.png");
-        this.load.image("platform","../ground.png");
-        this.load.image("loadingScreen","../intro.png");
-        this.load.spritesheet('player','../goku(2).png',
+        this.load.image("sky","bp.png");
+        this.load.image("platform","ground.png");
+        this.load.image("loadingScreen","intro.png");
+        this.load.spritesheet('player','goku(2).png',
         {frameWidth:300,frameHeight:300});
-        this.load.image("coin","../coin.png");
-        this.load.image("rock","../Saibamen.png");
-        this.load.image("gameOver","../game_over.png");
-        this.load.image("gameWin","../game_won.jpg");
-        this.load.image("bullet","../energy-blast.png");
-        this.load.audio("bgmusic","../musicdbztrim.mp3");
+        this.load.image("coin","coin.png");
+        this.load.image("rock","Saibamen.png");
+        this.load.image("gameOver","game_over.png");
+        this.load.image("gameWin","game_won.jpg");
+        this.load.image("bullet","energy-blast.png");
+        this.load.audio("bgmusic","musicdbztrim.mp3");
     }
     create(){
         this.cursorKeys = this.input.keyboard.createCursorKeys();
