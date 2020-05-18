@@ -3,17 +3,17 @@ class Preloader extends Phaser.Scene{
         super("Preloader");
     }
     preload(){
-        this.load.image("sky","../assets/bp.png");
-        this.load.image("platform","../assets/ground.png");
-        this.load.image("loadingScreen","../assets/intro.png");
-        this.load.spritesheet('player','../assets/goku(2).png',
+        this.load.image("sky","/assets/bp.png");
+        this.load.image("platform","/assets/ground.png");
+        this.load.image("loadingScreen","/assets/intro.png");
+        this.load.spritesheet('player','/assets/goku(2).png',
         {frameWidth:300,frameHeight:300});
-        this.load.image("coin","../assets/coin.png");
-        this.load.image("rock","../assets/Saibamen.png");
-        this.load.image("gameOver","../assets/game_over.png");
-        this.load.image("gameWin","../assets/game_won.jpg");
-        this.load.image("bullet","../assets/energy-blast.png");
-        this.load.audio("bgmusic","../assets/musicdbztrim.mp3");
+        this.load.image("coin","/assets/coin.png");
+        this.load.image("rock","/assets/Saibamen.png");
+        this.load.image("gameOver","/assets/game_over.png");
+        this.load.image("gameWin","/assets/game_won.jpg");
+        this.load.image("bullet","/assets/energy-blast.png");
+        this.load.audio("bgmusic","/assets/musicdbztrim.mp3");
     }
     create(){
         this.cursorKeys = this.input.keyboard.createCursorKeys();
