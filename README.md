@@ -1,2 +1,2 @@
 # saiyancity
-A Dragonball inspired platform made using Phaser
+A Dragonball inspired platformer made using Phaser
