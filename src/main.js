@@ -7,6 +7,7 @@ window.addEventListener('load',(event)=>{
     canvas.id = 'gameCanvas';
     
     div.appendChild(canvas);
+    //div.setAttribute("style","width:100%;height:100vh;position:relative;")
 })
 const WIDTH = 800;
 const HEIGHT = 600;

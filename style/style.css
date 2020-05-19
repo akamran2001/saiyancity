@@ -3,8 +3,13 @@ body {
     background-position: center;
     background-repeat: repeat;
   }
+#canvasDiv{
+  width:100%;height:100vh;position:relative;
+}
 #gameCanvas{
-    border:solid red thick;
+    border: solid 20px;
+    border-image-source: linear-gradient(to right, red,orange,blue,navy);;
+    border-image-slice: 1;
     position:absolute;
     top:0;bottom:0;right:0;left:0;
     margin:auto;
