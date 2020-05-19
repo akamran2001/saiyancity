@@ -1,3 +1,13 @@
+window.addEventListener('load',(event)=>{
+    const div = document.createElement('div');
+    div.id = 'canvasDiv';
+    document.body.appendChild(div);
+    
+    const canvas = document.getElementsByTagName('canvas')[0];
+    canvas.id = 'gameCanvas';
+    
+    div.appendChild(canvas);
+})
 const WIDTH = 800;
 const HEIGHT = 600;
 const config = {

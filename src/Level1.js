@@ -29,11 +29,14 @@ class Level1 extends Phaser.Scene{
         this.cursorKeys = this.input.keyboard.createCursorKeys();
         this.spacebar = this.input.keyboard.addKey("SPACE");
         this.generatePlayerAnimations();
-        this.displayScore = this.add.text(0,0,this.score).setOrigin(0,0);
+        this.displayScore = this.add.text(0,0,0,{
+            fontSize:'30px'
+        }).setOrigin(0,0);
     }
     update(){
         this.handleKeys(this.cursorKeys,this.spacebar);
-        this.displayScore.setText(this.score);
+        let scoreText = "Score: " + this.score;
+        this.displayScore.setText(scoreText);
     }
     //Helpers
     shootBullet(bulletGroup, player,d){
