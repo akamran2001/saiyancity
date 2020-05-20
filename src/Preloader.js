@@ -16,6 +16,12 @@ class Preloader extends Phaser.Scene{
         this.load.audio("bgmusic","musicdbztrim.mp3");
         this.load.audio("kiBlastSound","kiBlast.mp3");
         this.load.audio("coinAudio","coinAudio.wav");
+
+        this.load.image('fire', 'http://labs.phaser.io/assets/particles/muzzleflash3.png');
+        this.load.image('smoke', 'http://labs.phaser.io/assets/particles/lit-smoke.png');
+        this.load.image('spark0', 'http://labs.phaser.io/assets/particles/blue.png');
+        this.load.image('spark1', 'http://labs.phaser.io/assets/particles/red.png');
+        this.load.atlas('flares', 'http://labs.phaser.io/assets/particles/flares.png', 'http://labs.phaser.io/assets/particles/flares.json');
     }
     create(){
         this.cursorKeys = this.input.keyboard.createCursorKeys();

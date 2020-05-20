@@ -39,6 +39,7 @@ class Level1 extends Phaser.Scene{
         this.displayScore = this.add.text(0,0,0,{
             fontSize:'30px'
         }).setOrigin(0,0);
+        
     }
     update(){
         this.handleKeys(this.cursorKeys,this.spacebar);
@@ -46,6 +47,25 @@ class Level1 extends Phaser.Scene{
         this.displayScore.setText(scoreText);
     }
     //Helpers
+    generateExplosion(_x,_y,_frame){
+        let particles = this.add.particles(_frame);
+        particles.createEmitter({
+            alpha: { start: 1, end: 0 },
+            scale: { start: 0.5, end: 2.5 },
+            //tint: { start: 0xff945e, end: 0xff945e },
+            speed: 20,
+            accelerationX:0,
+            accelerationY:0,
+            angle: { min: -85, max: -95 },
+            rotate: { min: -180, max: 180 },
+            lifespan: { min: 250, max: 250 },
+            blendMode: 'ADD',
+            frequency: 50,
+            maxParticles: 5,
+            x: _x,
+            y: _y
+        });
+    }
     shootBullet(bulletGroup, player,d){
         bulletGroup.fireBullet(player.x+10,player.y,d,this.kiBlastSound);
     }
@@ -159,7 +179,10 @@ class Level1 extends Phaser.Scene{
             bullet.setVisible(false);
         },null,this);
         this.physics.add.overlap(this.rocks,this.bulletGroup,(rock,bullet)=>{
+            let _x = rock.x;
+            let _y = rock.y;
             rock.destroy();
+            this.generateExplosion(_x,_y,"spark0");
             this.score += 10;
         },null,this);
         this.physics.add.overlap(this.player,this.coins,(player,coin)=>
@@ -178,6 +201,7 @@ class Level1 extends Phaser.Scene{
         this.physics.add.overlap(this.player,this.rocks,(player,rock)=>{
             rock.disableBody(true,true);
             player.disableBody(true,true);
+            this.generateExplosion(player.x,player.y,"spark1");
             this.gameOver(false);
         },null,this);
     }
@@ -238,7 +262,10 @@ class Level1 extends Phaser.Scene{
             this.scene.start("GameOver",{key:"gameWin",scale:1.25});
         }
         else{
-            this.scene.start("GameOver",{key:"gameOver",scale:0.5});
+            this.time.delayedCall(250,()=>{
+                this.scene.start("GameOver",{key:"gameOver",scale:0.5})
+            },[],this);
+            
         }
     }
 }
