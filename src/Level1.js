@@ -19,7 +19,6 @@ class Level1 extends Phaser.Scene{
             child.setBounceY(Phaser.Math.FloatBetween(0.1,0.7));
         });
         this.player = this.addPlayer();
-        this.player.setSize(this.player.width*0.75,this.player.height*0.75);
         //this.player.setScale(0.20,0.20);
         this.rocks = this.physics.add.group();
         this.bulletGroup = new BulletGroup(this);
@@ -49,7 +48,7 @@ class Level1 extends Phaser.Scene{
             let y = Phaser.Math.Between(0,config.height);
             let rock = rocks.create(x,0,'rock');
             rock.setScale(0.25);
-            rock.setSize(rock.width*.5,rock.height*0.5)
+            rock.setSize(rock.width*0.35,rock.height*0.5)
             rock.setBounce(1);
             rock.setCollideWorldBounds(true);
             rock.setVelocity(Phaser.Math.Between(-config.width/10,config.width/10),Phaser.Math.Between(-config.height/10,config.height/10));
@@ -80,6 +79,14 @@ class Level1 extends Phaser.Scene{
         
     }
     handleKeys(cursorKeys){
+        if(config.physics.arcade.debug){
+            if(cursorKeys.down.isDown){
+                if(!this.scene.isPaused(this)){
+                    this.scene.pause(this);
+                    console.log("paused")
+                }
+            }
+        }
         if(cursorKeys.up.isDown && this.player.body.touching.down){
             this.player.setVelocityY(-config.height/3);
         }
@@ -170,6 +177,7 @@ class Level1 extends Phaser.Scene{
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
         player.setScale(0.20);
+        player.setSize(player.width*0.65,player.height*0.75);
         return player;
     }
     generatePlayerAnimations(){
