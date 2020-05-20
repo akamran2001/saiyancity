@@ -12,14 +12,14 @@ class BulletGroup extends Phaser.Physics.Arcade.Group{
             visible:false,
             key:"bullet"
         })
-        this.i = 0;
+        
     }
-    fireBullet(x,y,d){
+    fireBullet(x,y,d,effect){
         const bullet = this.getFirstDead(false);
         //const bullet = this.getFirstDead(true,x,y,"bullet");
         if(bullet){
+            effect.play();
             bullet.fire(x,y,d);
-            this.i++;
         }
     }
 }

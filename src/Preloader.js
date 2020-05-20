@@ -14,6 +14,8 @@ class Preloader extends Phaser.Scene{
         this.load.image("gameWin","game_won.jpg");
         this.load.image("bullet","energy-blast.png");
         this.load.audio("bgmusic","musicdbztrim.mp3");
+        this.load.audio("kiBlastSound","kiBlast.mp3");
+        this.load.audio("coinAudio","coinAudio.wav");
     }
     create(){
         this.cursorKeys = this.input.keyboard.createCursorKeys();

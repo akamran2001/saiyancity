@@ -6,7 +6,15 @@ class Level1 extends Phaser.Scene{
     }
     create(){
         this.bgMusic = this.sound.add("bgmusic",{
-            loop:true
+            loop:true,
+            volume:0.5
+        });
+        this.kiBlastSound = this.sound.add("kiBlastSound",{
+            loop:false,
+            volume:0.25
+        });
+        this.coinSound = this.sound.add("coinAudio",{
+            loop:false
         });
         this.bgMusic.play();
         this.sky = this.add.image(0,0,"sky");
@@ -19,7 +27,7 @@ class Level1 extends Phaser.Scene{
             child.setBounceY(Phaser.Math.FloatBetween(0.1,0.7));
         });
         this.player = this.addPlayer();
-        //this.player.setScale(0.20,0.20);
+        
         this.rocks = this.physics.add.group();
         this.bulletGroup = new BulletGroup(this);
         this.bulletGroup.runChildUpdate = true;
@@ -39,7 +47,7 @@ class Level1 extends Phaser.Scene{
     }
     //Helpers
     shootBullet(bulletGroup, player,d){
-        bulletGroup.fireBullet(player.x+10,player.y,d);
+        bulletGroup.fireBullet(player.x+10,player.y,d,this.kiBlastSound);
     }
     generateRock(rocks,player){
             // let x = (player.x < config.width/2) ? Phaser.Math.Between(config.width/2,config.width) : Phaser.Math.Between(0,config.width/2);
@@ -157,6 +165,7 @@ class Level1 extends Phaser.Scene{
         this.physics.add.overlap(this.player,this.coins,(player,coin)=>
         {
             coin.disableBody(true,true);
+            this.coinSound.play();
             if(this.coins.countActive(true)===0){
                 this.gameOver(true);
             }
